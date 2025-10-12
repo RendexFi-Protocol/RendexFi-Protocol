@@ -404,19 +404,26 @@ footer .theme-icon {
   font-size: 16px;
   opacity: 0.9;
 }
-
-/* ⚡ Solana Icon */
-.solana-icon {
+.network-icons {
   display: flex;
+  gap: 12px;
+  align-items: center;
   justify-content: center;
-  margin-top: 0.4rem;
-  opacity: 0.8;
-  transition: 0.3s ease;
+  margin: 10px 0;
 }
 
-.solana-icon:hover {
-  opacity: 1;
-  transform: translateY(-2px);
+.solana-icon, .ethereum-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solana-icon svg, .ethereum-icon svg {
+  transition: transform 0.2s ease;
+}
+
+.solana-icon:hover svg, .ethereum-icon:hover svg {
+  transform: scale(1.1);
 }
 
 /* 📱 Responsive */
@@ -433,4 +440,29 @@ footer .theme-icon {
     flex-wrap: wrap;
     gap: 10px;
   }
+}
+/* WALLETS INTERACTION */
+.wallet-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 12px;
+  font-size: 0.9rem;
+  color: #9fffcb;
+  background: rgba(0, 255, 128, 0.08);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #2ecc71;
+}
+
+.wallet-address {
+  font-family: monospace;
 }
