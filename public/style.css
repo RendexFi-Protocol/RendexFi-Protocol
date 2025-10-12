@@ -1,0 +1,436 @@
+:root {
+  /* 🌙 Dunkelmodus (Standard) */
+  --bg0: #070b18;
+  --text: #e6eef8;
+  --muted: #a7b2c7;
+  --acc1: #2dd4bf;
+  --acc2: #60a5fa;
+  --panel: rgba(15, 20, 40, 0.6);
+  --border: rgba(255, 255, 255, 0.08);
+  --bg-gradient: radial-gradient(circle at top, #0b1125 0%, #070b18 100%);
+}
+
+/* ☀️ Hellmodus */
+body.light-mode {
+  --bg0: #f8fafc;
+  --text: #1e293b;
+  --muted: #64748b;
+  --acc1: #0d9488;
+  --acc2: #2563eb;
+  --panel: rgba(255, 255, 255, 0.8);
+  --border: rgba(0, 0, 0, 0.1);
+  --bg-gradient: radial-gradient(circle at top, #e2e8f0 0%, #f1f5f9 100%);
+}
+
+/* 🧩 GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg-gradient);
+  color: var(--text);
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* 🧭 NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1100px;
+  background: rgba(10, 16, 36, 0.6);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(96,165,250,0.08);
+  z-index: 100;
+  transition: background 0.5s ease, border-color 0.3s ease;
+}
+
+.light-mode .navbar {
+  background: rgba(248, 250, 252, 0.8);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.1);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo {
+  height: 26px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.accent {
+  color: var(--acc2);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.6rem;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+}
+
+.light-mode .nav-right {
+  background: rgba(0, 0, 0, 0.03);
+}
+/* 📋 Drop-down Menü – verbessert */
+.dropdown-menu {
+  position: absolute;
+  top: 68px; /* passt perfekt zur Navbar-Höhe */
+  right: 1.2rem;
+  background: rgba(10, 16, 36, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  width: 180px;
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 9999;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.light-mode .dropdown-menu {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Aktiv-Zustand */
+.dropdown-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Inhalt */
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.dropdown-menu li {
+  padding: 10px 18px;
+}
+
+.dropdown-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  transition: color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  color: var(--acc1);
+}
+
+/* 🎯 Buttons */
+.beta-btn {
+  background: linear-gradient(90deg, var(--acc1), var(--acc2));
+  color: #000;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.beta-btn:hover {
+  opacity: 0.9;
+}
+
+.icon-btn, .menu-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon-btn:hover, .menu-btn:hover {
+  border-color: var(--acc2);
+  box-shadow: 0 0 10px rgba(96,165,250,0.25);
+}
+
+/* 💎 HERO */
+.hero {
+  padding: 8.5rem 1.6rem 3rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1.4rem;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+h1 span {
+  background: linear-gradient(90deg, var(--acc1), var(--acc2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* 🚀 Launch Button */
+.launch-app-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  background: linear-gradient(90deg, var(--acc1), var(--acc2));
+  color: #000;
+  font-weight: 700;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 18px rgba(96,165,250,0.15);
+}
+
+.launch-app-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(96,165,250,0.25);
+  opacity: 0.9;
+}
+
+/* 🧱 MODULES */
+.modules {
+  padding: 2.5rem 1.6rem 4rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  flex: 1;
+  min-width: 260px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  border-color: var(--acc2);
+  box-shadow: 0 0 15px rgba(96,165,250,0.1);
+}
+
+.card-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.05);
+  color: var(--muted);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  margin-bottom: 0.7rem;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* 📊 Live Stats */
+.live-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem 2rem;
+  margin: 2.5rem auto;
+  max-width: 640px;
+}
+
+.stat {
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+}
+
+/* 🌐 Socials + Theme Button nebeneinander */
+footer {
+  text-align: center;
+  padding: 1.3rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Social + Theme Row */
+footer .socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+footer .socials a {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border);
+  transition: transform .18s ease, background .18s ease;
+}
+
+footer .socials a:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.12);
+}
+
+footer .socials svg {
+  width: 17px;
+  height: 17px;
+  fill: var(--muted);
+}
+
+/* 🌙 Theme Toggle Button */
+footer .theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+footer .theme-toggle:hover {
+  border-color: var(--acc2);
+  box-shadow: 0 0 8px rgba(96,165,250,0.2);
+}
+
+footer .theme-icon {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* ⚡ Solana Icon */
+.solana-icon {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.4rem;
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+
+.solana-icon:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    width: calc(100% - 1.4rem);
+  }
+
+  .hero {
+    padding-top: 8rem;
+  }
+
+  footer .socials {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
