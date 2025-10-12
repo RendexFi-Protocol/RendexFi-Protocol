@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>RendexFi • Beta Access</title>
+  <title>RendexFi Protocol</title>
   <meta name="theme-color" content="#070b18">
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="./rendex_logo.PNG" type="image/png">
@@ -16,12 +16,17 @@
   <header class="navbar">
     <div class="nav-wrapper">
       <div class="nav-left">
-        <img src="./rendex_logo.PNG" alt="RendexFi Logo" class="logo">
+        <img src="/pics/rendex_logo4.png" alt="RendexFi Logo" class="logo">
         <span class="brand">Rendex<span class="accent">Fi</span></span>
       </div>
 
       <div class="nav-right">
         <a href="./assets/beta.html" class="beta-btn">BETA</a>
+
+        <div class="wallet-status" id="walletStatus" style="display: none;">
+          <span class="status-dot"></span>
+          <span class="wallet-address"></span>
+        </div>
 
         <!-- 💰 Modern Wallet Icon -->
         <button class="icon-btn" title="Wallet verbinden">
@@ -132,17 +137,36 @@
     <span class="theme-icon">🌙</span>
   </button>
 </div>
-    
-    <!-- Solana Icon -->
-<div class="solana-icon" title="Solana Network">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397 311" width="28" height="22">
-    <linearGradient id="solanaGradient" x1="0" y1="0" x2="100%" y2="0">
-      <stop offset="0%" stop-color="#00FFA3"/>
-      <stop offset="100%" stop-color="#DC1FFF"/>
-    </linearGradient>
-    <path fill="url(#solanaGradient)" d="M64 237c3-3 7-5 12-5h315c5 0 7 5 4 9l-56 63c-3 3-7 5-12 5H12c-5 0-7-5-4-9l56-63ZM64 138c3-3 7-5 12-5h315c5 0 7 5 4 9l-56 63c-3 3-7 5-12 5H12c-5 0-7-5-4-9l56-63ZM64 39c3-3 7-5 12-5h315c5 0 7 5 4 9l-56 63c-3 3-7 5-12 5H12c-5 0-7-5-4-9l56-63Z"/>
-  </svg>
+  </div>
+
+
+  <!-- NETZWERK ICONS -->
+<div class="network-icons" title="Unterstützte Netzwerke">
+
+  <!-- Solana Icon -->
+  <div class="solana-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397 311" width="15" height="15">
+      <linearGradient id="solanaGradient" x1="0" y1="0" x2="100%" y2="0">
+        <stop offset="0%" stop-color="#00FFA3"/>
+        <stop offset="100%" stop-color="#DC1FFF"/>
+      </linearGradient>
+      <path fill="url(#solanaGradient)" d="M64 237c3-3 7-5 12-5h315c5 0 7 5 4 9l-56 63c-3 3-7 5-12 5H12c-5 0-7-5-4-9l56-63ZM64 138c3-3 7-5 12-5h315c5 0 7 5 4 9l-56 63c-3 3-7 5-12 5H12c-5 0-7-5-4-9l56-63ZM64 39c3-3 7-5 12-5h315c5 0 7 5 4 9l-56 63c-3 3-7 5-12 5H12c-5 0-7-5-4-9l56-63Z"/>
+    </svg>
+  </div>
+  
+  <!-- Ethereum Icon -->
+  <div class="ethereum-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.37 1277.39" width="15" height="15">
+      <polygon fill="#343434" points="392.07,0 383.5,29.11 383.5,873.74 392.07,882.29 784.13,650.54"/>
+      <polygon fill="#8C8C8C" points="392.07,0 -0,650.54 392.07,882.29 392.07,472.33"/>
+      <polygon fill="#3C3C3B" points="392.07,956.52 387.24,962.41 387.24,1263.28 392.07,1277.38 784.37,724.89"/>
+      <polygon fill="#8C8C8C" points="392.07,1277.38 392.07,956.52 -0,724.89"/>
+      <polygon fill="#141414" points="392.07,882.29 784.13,650.54 392.07,472.33"/>
+      <polygon fill="#393939" points="0,650.54 392.07,882.29 392.07,472.33"/>
+    </svg>
+  </div>
 </div>
+
     <p>© 2025 RendexFi Protocol · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
   </footer>
   <script>
@@ -194,6 +218,34 @@
             alert('App wird gestartet!');
             // window.location.href = 'https://deine-app-url.com'; // Beispiel für Weiterleitung
         });
+  const walletButton = document.querySelector('.icon-btn');
+  const walletStatus = document.getElementById('walletStatus');
+  const walletAddressSpan = document.querySelector('.wallet-address');
+
+  async function connectPhantom() {
+    const provider = window.solana;
+
+    if (!provider || !provider.isPhantom) {
+      alert('Bitte installiere zuerst die Phantom Wallet App:\nhttps://phantom.app');
+      return;
+    }
+
+    try {
+      const response = await provider.connect({ onlyIfTrusted: false });
+      const address = response.publicKey.toString();
+
+      // Adresse anzeigen & Status aktivieren
+      walletStatus.style.display = 'flex';
+      walletAddressSpan.textContent = `${address.slice(0, 4)}...${address.slice(-4)}`;
+
+      console.log('Verbunden mit Wallet:', address);
+    } catch (err) {
+      console.error('Verbindung abgelehnt:', err);
+      alert('Wallet-Verbindung wurde abgelehnt.');
+    }
+  }
+
+  walletButton.addEventListener('click', connectPhantom);
 </script>
 </body>
 </html>
