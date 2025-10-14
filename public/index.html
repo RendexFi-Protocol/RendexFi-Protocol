@@ -239,103 +239,84 @@
     <p>© 2025 RendexFi Protocol · <a href="#">Impressum</a> · <a href="./assets/privacy.html">Datenschutz</a></p>
   </footer>
   <script>
-    // Theme Toggle
+    // 🌗 Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
     const themeIcon = themeToggle.querySelector('.theme-icon');
-    const themeText = themeToggle.querySelector('.theme-text');
 
-    // Prüfen, ob bereits ein Modus gespeichert ist
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
       body.classList.add('light-mode');
       themeIcon.textContent = '☀️';
-      themeText.textContent = 'Hellmodus';
     }
 
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('light-mode');
-      
       if (body.classList.contains('light-mode')) {
         themeIcon.textContent = '☀️';
-        themeText.textContent = 'Hellmodus';
         localStorage.setItem('theme', 'light');
       } else {
         themeIcon.textContent = '🌙';
-        themeText.textContent = 'Dunkelmodus';
         localStorage.setItem('theme', 'dark');
       }
     });
-    
-  const menuBtn = document.querySelector('.menu-btn');
-  const dropdownMenu = document.querySelector('.dropdown-menu');
 
-  menuBtn.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('active');
-  });
+    // 📋 Menü öffnen/schließen
+    const menuBtn = document.querySelector('.menu-btn');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    menuBtn.addEventListener('click', () => dropdownMenu.classList.toggle('active'));
+    document.addEventListener('click', e => {
+      if (!dropdownMenu.contains(e.target) && !menuBtn.contains(e.target)) dropdownMenu.classList.remove('active');
+    });
 
-  // Klick außerhalb schließt Menü
-  document.addEventListener('click', (e) => {
-    if (!dropdownMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-      dropdownMenu.classList.remove('active');
-    }
-  });
-  // Launch App Button Funktionalität
-        const launchAppBtn = document.getElementById('launchAppBtn');
-        launchAppBtn.addEventListener('click', () => {
-            // Hier kannst du die Aktion für den Launch App Button definieren
-            alert('App wird gestartet!');
-            // window.location.href = 'https://deine-app-url.com'; // Beispiel für Weiterleitung
-        });
-        
-        
-  const walletButton = document.querySelector('.icon-btn');
-  const walletStatus = document.getElementById('walletStatus');
-  const walletAddressSpan = document.querySelector('.wallet-address');
+    // 🚀 Launch Button
+    document.getElementById('launchAppBtn').addEventListener('click', () => {
+      alert('App wird gestartet!');
+    });
 
-  async function connectPhantom() {
-    try {
-      if (!window.solana || !window.solana.isPhantom) {
-        alert('Bitte installiere zuerst die Phantom Wallet:\nhttps://phantom.app');
-        return;
+    // 💰 Phantom Wallet Connect
+    const walletButton = document.getElementById('walletButton');
+    const walletStatus = document.getElementById('walletStatus');
+    const walletAddressSpan = document.querySelector('.wallet-address');
+
+    async function connectPhantom() {
+      try {
+        if (!window.solana || !window.solana.isPhantom) {
+          alert('Bitte installiere zuerst die Phantom Wallet:\nhttps://phantom.app');
+          return;
+        }
+
+        const provider = window.solana;
+        const response = await provider.connect();
+        if (!response?.publicKey) return alert('Wallet-Verbindung fehlgeschlagen.');
+
+        const address = response.publicKey.toString();
+        console.log('✅ Verbunden mit Wallet:', address);
+
+        walletStatus.classList.add('active');
+        walletAddressSpan.textContent = `${address.slice(0, 4)}...${address.slice(-4)}`;
+        walletButton.style.display = 'none';
+
+        localStorage.setItem('walletConnected', 'true');
+        localStorage.setItem('walletAddress', address);
+      } catch (err) {
+        console.error('❌ Verbindung fehlgeschlagen:', err);
+        alert('Wallet-Verbindung wurde abgelehnt oder ist fehlgeschlagen.');
       }
+    }
 
-      const provider = window.solana;
-      const response = await provider.connect();
-
-      if (!response || !response.publicKey) {
-        alert('Wallet-Verbindung fehlgeschlagen.');
-        return;
+    // 🔁 Auto-Reconnect
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('walletConnected');
+      const savedAddr = localStorage.getItem('walletAddress');
+      if (saved && savedAddr) {
+        walletStatus.classList.add('active');
+        walletAddressSpan.textContent = `${savedAddr.slice(0, 4)}...${savedAddr.slice(-4)}`;
+        walletButton.style.display = 'none';
       }
+    });
 
-      const address = response.publicKey.toString();
-
-      // ✅ Wallet anzeigen
-      walletStatus.classList.add('active');
-      walletAddressSpan.textContent = `${address.slice(0, 4)}...${address.slice(-4)}`;
-
-      // ✅ Optional: Speichern, damit beim Reload Wallet sichtbar bleibt
-      localStorage.setItem('walletConnected', 'true');
-      localStorage.setItem('walletAddress', address);
-
-      console.log('Verbunden mit Wallet:', address);
-    } catch (err) {
-      console.error('Fehler bei der Verbindung:', err);
-      alert('Wallet-Verbindung wurde abgelehnt oder ist fehlgeschlagen.');
-    }
-  }
-
-  // ✅ Automatisches Wiederherstellen der Wallet nach Reload
-  document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('walletConnected');
-    const savedAddr = localStorage.getItem('walletAddress');
-    if (saved && savedAddr) {
-      walletStatus.classList.add('active');
-      walletAddressSpan.textContent = `${savedAddr.slice(0, 4)}...${savedAddr.slice(-4)}`;
-    }
-  });
-
-  walletButton.addEventListener('click', connectPhantom);
+    walletButton.addEventListener('click', connectPhantom);
 
   /* ROUND MAP INTERAKTION */
   document.addEventListener('DOMContentLoaded', function() {
