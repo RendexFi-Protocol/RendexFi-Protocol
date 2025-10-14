@@ -16,7 +16,7 @@
   <header class="navbar">
     <div class="nav-wrapper">
       <div class="nav-left">
-        <img src="/pics/rendex_logo4.png" alt="RendexFi Logo" class="logo">
+        <img src="/Webseite/pics/rendex_logo4.png" alt="RendexFi Logo" class="logo">
         <span class="brand">Rendex<span class="accent">Fi</span></span>
       </div>
 
@@ -54,6 +54,7 @@
   <nav class="dropdown-menu">
     <ul>
       <li><a href="#">FAQ</a></li>
+			<li><a href="#">HOME</a></li>
       <li><a href="#">CONTRACT</a></li>
       <li><a href="#">DOCS</a></li>
     </ul>
@@ -120,7 +121,75 @@
     <div class="stat-label">Active Wallets</div>
   </div>
 </section>
-  </main>
+  <section class="roadmap-section">
+    <div class="roadmap-container">
+        <div class="snake-head"></div>
+        
+        <svg class="snake-path" viewBox="0 0 400 1400" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4f46e5" />
+                    <stop offset="100%" stop-color="#7c3aed" />
+                </linearGradient>
+            </defs>
+            <path class="snake-line" d="M 200,50 
+                                       C 300,150 100,250 200,350
+                                       C 300,450 100,550 200,650
+                                       C 300,750 100,850 200,950
+                                       C 300,1050 100,1150 200,1250
+                                       C 300,1350 100,1450 200,1350" />
+        </svg>
+        
+        <div class="snake-tail"></div>
+        
+        <div class="milestones">
+            <div class="milestone">
+                <div class="milestone-circle">
+                    Token Launch
+                    <div class="status-badge">In Entwicklung</div>
+                </div>
+                <div class="milestone-content">
+                    <h3 class="milestone-title">Token Launch</h3>
+                    <p class="milestone-description">Der offizielle Start des RendexFi Tokens mit Listing auf mehreren Börsen.</p>
+                </div>
+            </div>
+            
+            <div class="milestone">
+                <div class="milestone-circle">
+                    Staking
+                    <div class="status-badge">In Entwicklung</div>
+                </div>
+                <div class="milestone-content">
+                    <h3 class="milestone-title">Staking Plattform</h3>
+                    <p class="milestone-description">Verdienen Sie passive Erträge durch das Staken Ihrer RendexFi Tokens.</p>
+                </div>
+            </div>
+            
+            <div class="milestone">
+                <div class="milestone-circle">
+                    LIQ Pool
+                    <div class="status-badge">Geplant</div>
+                </div>
+                <div class="milestone-content">
+                    <h3 class="milestone-title">Liquidity Pool</h3>
+                    <p class="milestone-description">Bieten Sie Liquidität und verdienen Sie Transaktionsgebühren.</p>
+                </div>
+            </div>
+  
+            <div class="milestone">
+                <div class="milestone-circle">
+                    DAO
+                    <div class="status-badge">Geplant</div>
+                </div>
+                <div class="milestone-content">
+                    <h3 class="milestone-title">DAO Governance</h3>
+                    <p class="milestone-description">Community-gesteuerte Entscheidungen für die Zukunft des Projekts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
 
   <footer>
     <div class="socials">
@@ -167,7 +236,7 @@
   </div>
 </div>
 
-    <p>© 2025 RendexFi Protocol · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+    <p>© 2025 RendexFi Protocol · <a href="#">Impressum</a> · <a href="./assets/privacy.html">Datenschutz</a></p>
   </footer>
   <script>
     // Theme Toggle
@@ -246,6 +315,39 @@
   }
 
   walletButton.addEventListener('click', connectPhantom);
+
+  /* ROUND MAP INTERAKTION */
+  document.addEventListener('DOMContentLoaded', function() {
+    const milestones = document.querySelectorAll('.milestone');
+    
+    milestones.forEach((milestone, index) => {
+        milestone.style.animationDelay = `${index * 0.2}s`;
+    });
+    
+    const circles = document.querySelectorAll('.milestone-circle');
+    circles.forEach(circle => {
+        circle.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.15)';
+        });
+        
+        circle.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    const snakeLine = document.querySelector('.snake-line');
+    const pathLength = snakeLine.getTotalLength();
+    
+    snakeLine.style.strokeDasharray = pathLength;
+    snakeLine.style.strokeDashoffset = pathLength;
+    
+    function animateSnake() {
+        snakeLine.style.transition = 'stroke-dashoffset 2s ease-in-out';
+        snakeLine.style.strokeDashoffset = '0';
+    }
+    
+    setTimeout(animateSnake, 500);
+});
 </script>
 </body>
 </html>
