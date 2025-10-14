@@ -181,8 +181,8 @@ body {
 
 .footer-beta {
   text-align: center;
-  margin-bottom: 55px; 
-  margin-top: 15px;
+  margin-bottom: 65px; 
+  margin-top: 10px;
 }
 
 .footer-beta .beta-btn {
@@ -206,7 +206,11 @@ body {
 .beta-btn:hover {
   opacity: 0.9;
 }
-
+@media (max-width: 600px) {
+  .footer-beta {
+    margin-bottom: 55px; /* etwas kleiner, aber immer noch angenehm luftig */
+  }
+}
 .icon-btn,
 .menu-btn {
   background: rgba(255, 255, 255, 0.04);
