@@ -85,6 +85,13 @@ body {
 .accent {
   color: var(--acc2);
 }
+@media (max-width: 600px) {
+  .nav-right {
+    min-width: 110px;
+    gap: 0.45rem;
+    padding: 0.25rem 0.4rem;
+  }
+}
 
 .nav-right {
   display: flex;
