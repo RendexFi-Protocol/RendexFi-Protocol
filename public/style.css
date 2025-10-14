@@ -89,15 +89,15 @@ body {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.5rem; /* etwas kompakterer Abstand */
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
-  padding: 0.35rem 0.8rem;
+  padding: 0.3rem 0.5rem; /* 🔹 kleinere Innenabstände */
   border-radius: 40px;
   backdrop-filter: blur(10px);
   flex-wrap: nowrap;
-  min-width: 200px;
-  justify-content: center;
+  min-width: 130px; /* 🔥 kompaktere Boxgröße */
+  justify-content: center; /* zentriert Buttons */
 }
 
 /* 💰 Wallet Status */
