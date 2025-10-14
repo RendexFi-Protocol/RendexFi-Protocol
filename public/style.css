@@ -160,23 +160,22 @@ body {
 .light-mode .nav-right {
   background: rgba(0, 0, 0, 0.03);
 }
-
-/* 📋 Dropdown Menü – zentriert & elegant */
+/* 📋 Dropdown Menü – perfekt ausgerichtet unter Menü-Button */
 .dropdown-menu {
   position: absolute;
-  top: 58px; /* leicht unterhalb der Navbar */
-  right: 0.6rem; /* näher an den Buttons */
-  background: rgba(15, 20, 40, 0.95);
+  top: 52px; /* 🔹 sitzt jetzt direkt unter der Navbar */
+  right: 0.9rem; /* 🔹 minimal mehr Abstand für perfekte Zentrierung */
+  background: rgba(15, 20, 40, 0.96);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  width: 160px; /* 🔹 kompakter */
-  transform: translateY(-10px);
+  width: 165px;
+  transform: translateY(-8px);
   opacity: 0;
   pointer-events: none;
   transition: all 0.25s ease;
   z-index: 9999;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(10px);
 }
 
@@ -186,7 +185,7 @@ body {
   pointer-events: auto;
 }
 
-/* 🔹 Menülinks */
+/* Menü-Elemente */
 .dropdown-menu ul {
   list-style: none;
   margin: 0;
@@ -215,12 +214,12 @@ body {
   color: var(--acc1);
 }
 
-/* 🌞 Light Mode */
+/* ☀️ Light Mode */
 .light-mode .dropdown-menu {
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
-
+}
 .footer-beta {
   text-align: center;
   margin-bottom: 75px; 
