@@ -16,7 +16,7 @@
   <header class="navbar">
     <div class="nav-wrapper">
       <div class="nav-left">
-        <img src="/public/rendex_logo.PNG" alt="RendexFi Logo" class="logo">
+        <img src="/Webseite/pics/rendex_logo4.png" alt="RendexFi Logo" class="logo">
         <span class="brand">Rendex<span class="accent">Fi</span></span>
       </div>
 
@@ -304,7 +304,7 @@
       const address = response.publicKey.toString();
 
       // Adresse anzeigen & Status aktivieren
-      walletStatus.style.display = 'flex';
+      walletStatus.classList.add('active');
       walletAddressSpan.textContent = `${address.slice(0, 4)}...${address.slice(-4)}`;
 
       console.log('Verbunden mit Wallet:', address);
