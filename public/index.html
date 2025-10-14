@@ -287,32 +287,53 @@
             alert('App wird gestartet!');
             // window.location.href = 'https://deine-app-url.com'; // Beispiel für Weiterleitung
         });
+        
+        
   const walletButton = document.querySelector('.icon-btn');
   const walletStatus = document.getElementById('walletStatus');
   const walletAddressSpan = document.querySelector('.wallet-address');
 
   async function connectPhantom() {
-    const provider = window.solana;
-
-    if (!provider || !provider.isPhantom) {
-      alert('Bitte installiere zuerst die Phantom Wallet App:\nhttps://phantom.app');
-      return;
-    }
-
     try {
-      const response = await provider.connect({ onlyIfTrusted: false });
+      if (!window.solana || !window.solana.isPhantom) {
+        alert('Bitte installiere zuerst die Phantom Wallet:\nhttps://phantom.app');
+        return;
+      }
+
+      const provider = window.solana;
+      const response = await provider.connect();
+
+      if (!response || !response.publicKey) {
+        alert('Wallet-Verbindung fehlgeschlagen.');
+        return;
+      }
+
       const address = response.publicKey.toString();
 
-      // Adresse anzeigen & Status aktivieren
+      // ✅ Wallet anzeigen
       walletStatus.classList.add('active');
       walletAddressSpan.textContent = `${address.slice(0, 4)}...${address.slice(-4)}`;
 
+      // ✅ Optional: Speichern, damit beim Reload Wallet sichtbar bleibt
+      localStorage.setItem('walletConnected', 'true');
+      localStorage.setItem('walletAddress', address);
+
       console.log('Verbunden mit Wallet:', address);
     } catch (err) {
-      console.error('Verbindung abgelehnt:', err);
-      alert('Wallet-Verbindung wurde abgelehnt.');
+      console.error('Fehler bei der Verbindung:', err);
+      alert('Wallet-Verbindung wurde abgelehnt oder ist fehlgeschlagen.');
     }
   }
+
+  // ✅ Automatisches Wiederherstellen der Wallet nach Reload
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('walletConnected');
+    const savedAddr = localStorage.getItem('walletAddress');
+    if (saved && savedAddr) {
+      walletStatus.classList.add('active');
+      walletAddressSpan.textContent = `${savedAddr.slice(0, 4)}...${savedAddr.slice(-4)}`;
+    }
+  });
 
   walletButton.addEventListener('click', connectPhantom);
 
