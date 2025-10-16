@@ -20,17 +20,15 @@
   <title>RendexFi Protocol</title>
   <meta name="theme-color" content="#070b18">
   <meta name="color-scheme" content="dark">
-  <link rel="icon" href="./rendex_logo.PNG" type="image/png">
+  <link rel="icon" href="/img/logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
   <!-- 🧭 NAVBAR -->
   <header class="navbar">
     <div class="nav-wrapper">
       <div class="nav-left">
-        <img src="/rendex_logo.PNG" alt="RendexFi Logo" class="logo">
+        <img src="/img/logo.png" alt="RendexFi Logo" class="logo">
         <span class="brand">Rendex<span class="accent">Fi</span></span>
       </div>
 
@@ -73,7 +71,6 @@
       </ul>
     </nav>
   </header>
-
   <!-- 💎 HERO -->
   <main>
     <section class="hero">
@@ -81,7 +78,6 @@
       <h1>AI Portfolio Management & <span>Swaps</span></h1>
       <p>Verwalte dein gesamtes DeFi-Portfolio, handle Tokens in Sekunden und genieße volle Kontrolle – sicher, transparent und non-custodial.</p>
     </section>
-
     <!-- 🚀 Launch Button -->
     <button class="launch-app-btn" id="launchAppBtn">
       <svg class="launch-icon" viewBox="0 0 24 24">
@@ -117,6 +113,7 @@
           </h3>
           <p>Nahtlose Token-Transfers über mehrere Chains hinweg – sicher und gasoptimiert.</p>
         </div>
+				
       </div>
     </section>
     <section class="live-stats">
@@ -134,7 +131,8 @@
     <div class="stat-value">8.4K</div>
     <div class="stat-label">Active Wallets</div>
   </div>
-</section>
+
+  </section>
   <section class="roadmap-section">
     <div class="roadmap-container">
         <div class="snake-head"></div>
@@ -155,7 +153,6 @@
         </svg>
         
         <div class="snake-tail"></div>
-        
         <div class="milestones">
             <div class="milestone">
                 <div class="milestone-circle">
@@ -170,12 +167,12 @@
             
             <div class="milestone">
                 <div class="milestone-circle">
-                    Staking
+                    PnL Tracker
                     <div class="status-badge">In Entwicklung</div>
                 </div>
                 <div class="milestone-content">
-                    <h3 class="milestone-title">Staking Plattform</h3>
-                    <p class="milestone-description">Verdienen Sie passive Erträge durch das Staken Ihrer RendexFi Tokens.</p>
+                    <h3 class="milestone-title">PnL Tracker</h3>
+                    <p class="milestone-description">Behalten Sie Ihre Performance im Blick und analysieren Sie Gewinne und Verluste automatisch.</p>
                 </div>
             </div>
             
@@ -189,7 +186,18 @@
                     <p class="milestone-description">Bieten Sie Liquidität und verdienen Sie Transaktionsgebühren.</p>
                 </div>
             </div>
-  
+            <div class="milestone">
+                <div class="milestone-circle">
+                    Staking
+                    <div class="status-badge">Geplant</div>
+                </div>
+                <div class="milestone-content">
+                    <h3 class="milestone-title">Staking Plattform</h3>
+                    <p class="milestone-description">Verdienen Sie passive Erträge durch das Staken Ihrer RendexFi Tokens.</p>
+                </div>
+            </div>
+
+            
             <div class="milestone">
                 <div class="milestone-circle">
                     DAO
@@ -256,6 +264,31 @@
 
     <p>© 2025 RendexFi Protocol · <a href="#">Impressum</a> · <a href="./assets/privacy.html">Datenschutz</a></p>
   </footer>
+  <!-- 💰 WALLET MODAL -->
+<div id="walletModal" class="rendexfi-modal">
+  <div class="rendexfi-modal-content">
+    <span id="closeModal" class="close-btn">&times;</span>
+    <h3>Connect your Wallet</h3>
+    <p>Select a wallet to continue</p>
+
+    <div class="wallet-options">
+      <button data-wallet="phantom">
+        <img src="/img/phantom.png" alt="Phantom Logo">
+        Phantom
+      </button>
+
+      <button data-wallet="solflare">
+        <img src="/img/solflare.png" alt="Solflare Logo">
+        Solflare
+      </button>
+
+      <button data-wallet="backpack">
+        <img src="/img/backpack.png" alt="Backpack Logo">
+        Backpack
+      </button>
+    </div>
+  </div>
+</div>
   <script>
     // 🌗 Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
@@ -292,49 +325,74 @@
       alert('App wird gestartet!');
     });
 
-    // 💰 Phantom Wallet Connect
-    const walletButton = document.getElementById('walletButton');
-    const walletStatus = document.getElementById('walletStatus');
-    const walletAddressSpan = document.querySelector('.wallet-address');
+    // 💰 Wallet Connect Modal – RendexFi Edition
+const walletButton = document.getElementById('walletButton');
+const walletModal = document.getElementById('walletModal');
+const closeModal = document.getElementById('closeModal');
+const walletStatus = document.getElementById('walletStatus');
+const walletAddressSpan = document.querySelector('.wallet-address');
 
-    async function connectPhantom() {
-      try {
-        if (!window.solana || !window.solana.isPhantom) {
-          alert('Bitte installiere zuerst die Phantom Wallet:\nhttps://phantom.app');
-          return;
-        }
+// 🟢 Öffnet das Wallet-Modal beim Klick auf das Icon in der Navbar
+walletButton.addEventListener('click', () => {
+  walletModal.style.display = 'block';
+});
 
-        const provider = window.solana;
-        const response = await provider.connect();
-        if (!response?.publicKey) return alert('Wallet-Verbindung fehlgeschlagen.');
+// 🔴 Schließt das Modal (über das X oder Klick außerhalb)
+closeModal.addEventListener('click', () => {
+  walletModal.style.display = 'none';
+});
+window.addEventListener('click', (e) => {
+  if (e.target === walletModal) walletModal.style.display = 'none';
+});
 
-        const address = response.publicKey.toString();
-        console.log('✅ Verbunden mit Wallet:', address);
+// 💳 Verbindung mit ausgewählter Wallet
+document.querySelectorAll('[data-wallet]').forEach((btn) => {
+  btn.addEventListener('click', async () => {
+    const type = btn.dataset.wallet;
+    await connectWallet(type);
+    walletModal.style.display = 'none';
+  });
+});
 
-        walletStatus.classList.add('active');
-        walletAddressSpan.textContent = `${address.slice(0, 4)}...${address.slice(-4)}`;
-        walletButton.style.display = 'none';
+async function connectWallet(type) {
+  try {
+    let provider;
+    if (type === 'phantom') provider = window.solana?.isPhantom && window.solana;
+    else if (type === 'solflare') provider = window.solflare?.isSolflare && window.solflare;
+    else if (type === 'backpack') provider = window.backpack?.isBackpack && window.backpack;
 
-        localStorage.setItem('walletConnected', 'true');
-        localStorage.setItem('walletAddress', address);
-      } catch (err) {
-        console.error('❌ Verbindung fehlgeschlagen:', err);
-        alert('Wallet-Verbindung wurde abgelehnt oder ist fehlgeschlagen.');
-      }
-    }
+    if (!provider) return alert(`Bitte installiere zuerst ${type}.`);
 
-    // 🔁 Auto-Reconnect
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('walletConnected');
-      const savedAddr = localStorage.getItem('walletAddress');
-      if (saved && savedAddr) {
-        walletStatus.classList.add('active');
-        walletAddressSpan.textContent = `${savedAddr.slice(0, 4)}...${savedAddr.slice(-4)}`;
-        walletButton.style.display = 'none';
-      }
-    });
+    const res = await provider.connect();
+    const addr = res.publicKey.toString();
 
-    walletButton.addEventListener('click', connectPhantom);
+    // UI-Update
+    walletAddressSpan.textContent = `${addr.slice(0, 4)}...${addr.slice(-4)}`;
+    walletStatus.classList.add('active');
+    walletButton.style.display = 'none';
+
+    // Speichern für Auto-Reconnect
+    localStorage.setItem('walletConnected', 'true');
+    localStorage.setItem('walletType', type);
+    localStorage.setItem('walletAddress', addr);
+
+    console.log(`✅ Verbunden mit ${type}:`, addr);
+  } catch (err) {
+    console.error('❌ Verbindung fehlgeschlagen:', err);
+    alert('Wallet-Verbindung wurde abgebrochen oder ist fehlgeschlagen.');
+  }
+}
+
+// ♻️ Auto-Reconnect beim Seiten-Neuladen
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('walletConnected');
+  const addr = localStorage.getItem('walletAddress');
+  if (saved && addr) {
+    walletStatus.classList.add('active');
+    walletAddressSpan.textContent = `${addr.slice(0, 4)}...${addr.slice(-4)}`;
+    walletButton.style.display = 'none';
+  }
+});
 
   /* ROUND MAP INTERAKTION */
   document.addEventListener('DOMContentLoaded', function() {
@@ -367,6 +425,12 @@
     }
     
     setTimeout(animateSnake, 500);
+});
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY * 0.1;
+  document.querySelectorAll(".rdx-bg .token").forEach(el => {
+    el.style.transform = `translateY(${scrollY}px)`;
+  });
 });
 </script>
 </body>

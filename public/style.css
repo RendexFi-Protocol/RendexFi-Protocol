@@ -37,7 +37,6 @@ body {
   min-height: 100vh;
   transition: background 0.5s ease, color 0.3s ease;
 }
-
 /* 🧭 NAVBAR */
 .navbar {
   position: fixed;
@@ -92,7 +91,6 @@ body {
     padding: 0.25rem 0.4rem;
   }
 }
-
 .nav-right {
   display: flex;
   align-items: center;
@@ -272,16 +270,58 @@ body {
   border-color: var(--acc2);
   box-shadow: 0 0 10px rgba(96,165,250,0.25);
 }
-
-/* 💎 HERO */
-.hero {
-  padding: 8.5rem 1.6rem 3rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: left;
+main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
-.badge {
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 6rem 1.6rem 4rem; /* 🔹 kleiner oben */
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -80px; /* 🔥 verschiebt Bild nach oben unter Navbar */
+  left: 0;
+  width: 100%;
+  height: calc(100% + 80px); /* damit oben nix abgeschnitten wird */
+  background: url("/img/rdx_token.png") no-repeat center top;
+  background-size: 135%;
+  opacity: 0.25;
+  z-index: -1;
+  pointer-events: none;
+  filter: brightness(1.1);
+}
+/* 💨 sanfte Bewegung für visuelle Tiefe */
+@keyframes floatBackground {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(7, 11, 24, 0.1), var(--bg0));
+  z-index: -1;
+}
+
+badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.06);
   padding: 0.4rem 0.8rem;
@@ -837,4 +877,95 @@ footer .theme-icon {
 
 .snake-gradient-stop-2 {
     stop-color: var(--acc2);
+}
+/* 💰 RendexFi Wallet Modal */
+.rendexfi-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+}
+
+.rendexfi-modal-content {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: 340px;
+  margin: 10% auto;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(96,165,250,0.15);
+  animation: fadeInUp 0.35s ease;
+}
+
+.rendexfi-modal-content h3 {
+  background: linear-gradient(90deg, var(--acc1), var(--acc2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.rendexfi-modal-content p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.wallet-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wallet-options button {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.wallet-options button:hover {
+  border-color: var(--acc1);
+  box-shadow: 0 0 10px var(--acc1);
+  transform: scale(1.02);
+}
+
+.wallet-options img {
+  width: 26px;
+  height: 26px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--text);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
