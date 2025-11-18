@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#070b18">
+<meta name="color-scheme" content="dark">
+<title>Datenschutzerklärung – RendexFi Protocol</title>
+<style>
+:root{
+  --bg0:#070b18;--text:#e6eef8;--muted:#a7b2c7;
+  --acc1:#2dd4bf;--acc2:#60a5fa;
+  --panel:rgba(15,20,40,.6);--border:rgba(255,255,255,.08);
+  --bg-gradient:radial-gradient(circle at top,#0b1125 0%,#070b18 100%);
+}
+/* ☀️ Hellmodus */
+body.light-mode{
+  --bg0:#f8fafc;--text:#1e293b;--muted:#64748b;
+  --acc1:#0d9488;--acc2:#2563eb;
+  --panel:rgba(255,255,255,.8);--border:rgba(0,0,0,.1);
+  --bg-gradient:radial-gradient(circle at top,#e2e8f0 0%,#f1f5f9 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{
+  background:var(--bg-gradient);
+  color:var(--text);
+  min-height:100vh;
+  transition:background .5s ease,color .3s ease;
+}
+a{color:var(--acc1);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1100px;
+  background: rgba(10, 16, 36, 0.6);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(96,165,250,0.08);
+  z-index: 100;
+}
+
+.light-mode .navbar {
+  background: rgba(248, 250, 252, 0.8);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.1);
+}
+
+.nav-wrapper{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem}
+.nav-left{display:flex;align-items:center;gap:.6rem}
+.logo{height:26px}
+.brand{font-weight:700;font-size:1.1rem}
+.accent{color:var(--acc2)}
+.nav-right{display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:.35rem .6rem;border-radius:40px;backdrop-filter:blur(10px)}
+.beta-btn{background:linear-gradient(90deg,var(--acc1),var(--acc2));color:#000;font-weight:700;padding:.45rem 1rem;border-radius:30px;font-size:.85rem;text-decoration:none}
+.icon-btn,.menu-btn{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.dropdown-menu{position:absolute;top:68px;right:1.2rem;background:rgba(10,16,36,0.96);border:1px solid var(--border);border-radius:18px;overflow:hidden;width:180px;transform:translateY(-10px);opacity:0;pointer-events:none;transition:all .25s ease;z-index:9999}
+.dropdown-menu.active{transform:translateY(0);opacity:1;pointer-events:auto}
+.dropdown-menu ul{list-style:none;margin:0;padding:8px 0}
+.dropdown-menu li{padding:10px 18px}
+.dropdown-menu a{color:var(--text);text-decoration:none;font-weight:500;display:block}
+.dropdown-menu a:hover{color:var(--acc1)}
+
+/* === HERO AREA FIX === */
+.hero {
+  text-align: center;
+  padding-top: 140px; /* Abstand unter Navbar */
+  padding-bottom: 60px;
+  background: transparent; /* kein eigener Verlauf */
+  position: relative;
+  z-index: 1;
+}
+
+.hero .pill {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  background: linear-gradient(90deg, var(--acc1), var(--acc2));
+  color: #0b0f14;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.hero .title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  margin-top: 24px;
+  color: var(--text);
+}
+
+.hero .subtitle {
+  max-width: 720px;
+  margin: 12px auto 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* ===== LAYOUT ===== */
+main.wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 60px 0 100px;
+  position: relative;
+}
+
+/* Fixierte Sidebar */
+@media (min-width:961px){
+  nav.sticky{
+    position:fixed;
+    top:120px;
+    left:50%;
+    transform:translateX(-520px);
+    width:240px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--panel);
+    backdrop-filter:blur(6px);
+    padding:16px;
+    z-index:10;
+  }
+  .content{margin-left:300px;max-width:720px;}
+}
+
+/* Mobile */
+@media (max-width:960px){
+  main.wrap{flex-direction:column;align-items:center}
+  nav.sticky{position:relative;transform:none;width:100%;top:0;margin-bottom:24px}
+  .content{margin-left:0}
+}
+
+.toc h3{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.toc a{display:block;padding:8px 10px;border-radius:8px;color:var(--muted);font-size:14px;transition:all .2s}
+.toc a:hover{background:rgba(255,255,255,.05);color:var(--text)}
+
+.content section{border:1px solid var(--border);border-radius:16px;background:var(--panel);padding:22px;margin-bottom:24px;scroll-margin-top:140px}
+section h2{font-size:22px;color:var(--acc2);margin-bottom:6px}
+.kicker{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:1.3rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+footer .socials{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:24px}
+footer .socials a{display:inline-flex;width:34px;height:34px;border-radius:12px;align-items:center;justify-content:center;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid var(--border)}
+footer .socials a:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+footer .socials svg{width:17px;height:17px;fill:var(--muted)}
+footer .theme-toggle{width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer}
+footer .theme-toggle:hover{border-color:var(--acc2);box-shadow:0 0 8px rgba(96,165,250,0.2)}
+footer .theme-icon{font-size:16px;opacity:.9}
+</style>
+</head>
+<body>
+<header class="navbar">
+  <div class="nav-wrapper">
+    <div class="nav-left">
+      <img src="/pics/rendex_logo4.png" alt="RendexFi Logo" class="logo">
+      <span class="brand">Rendex<span class="accent">Fi</span></span>
+    </div>
+    <div class="nav-right">
+      <a href="./assets/beta.html" class="beta-btn">BETA</a>
+      <button class="icon-btn" title="Wallet verbinden">💰</button>
+      <button class="menu-btn" title="Menü">☰</button>
+    </div>
+  </div>
+  <nav class="dropdown-menu">
+    <ul>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">CONTRACT</a></li>
+      <li><a href="#">DOCS</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero wrap">
+  <span class="pill">🔐 Datenschutz</span>
+  <h1 class="title">Datenschutzerklärung</h1>
+  <p class="subtitle">Informationen zur Verarbeitung personenbezogener Daten bei Nutzung von <strong>RendexFi Protocol</strong>.</p>
+</div>
+
+<main class="wrap">
+  <nav class="sticky">
+    <div class="toc">
+      <h3>Inhalt</h3>
+      <a href="#einleitung">1. Einleitung</a>
+      <a href="#verantwortlicher">2. Verantwortlicher</a>
+      <a href="#hosting">3. Hosting</a>
+      <a href="#wallets">4. Wallet-Verbindungen</a>
+      <a href="#rechte">5. Rechte</a>
+      <a href="#kontakt">6. Kontakt</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <section id="einleitung">
+      <div class="kicker">Überblick</div>
+      <h2>1. Einleitung</h2>
+      <p>Diese Datenschutzerklärung informiert dich über die Verarbeitung personenbezogener Daten bei Nutzung von <strong>RendexFi Protocol</strong>. Wir achten darauf, so wenig personenbezogene Daten wie möglich zu verarbeiten („Privacy by Design“).</p>
+    </section>
+
+    <section id="verantwortlicher">
+      <div class="kicker">Zuständig</div>
+      <h2>2. Verantwortlicher</h2>
+      <p><strong>RendexFi Protocol</strong><br>Sandbrink 7, 31558 Hagenburg, Deutschland<br>E-Mail: <a href="mailto:privacy@rendexfi.app">privacy@rendexfi.app</a></p>
+    </section>
+
+    <section id="hosting">
+      <div class="kicker">Infrastruktur</div>
+      <h2>3. Hosting (Vercel)</h2>
+      <p>Unsere Website wird bei <strong>Vercel Inc.</strong> gehostet. Beim Aufruf der Seite werden Verbindungsdaten (IP-Adresse, Browsertyp, Zeitpunkt) verarbeitet, um die Bereitstellung und Sicherheit zu gewährleisten.</p>
+    </section>
+
+    <section id="wallets">
+      <div class="kicker">Web3</div>
+      <h2>4. Wallet-Verbindungen (Phantom)</h2>
+      <p>Für DeFi-Interaktionen kannst du eine Wallet (z. B. <strong>Phantom</strong>) verbinden. Dabei verarbeitet der Anbieter deine öffentliche Wallet-Adresse und ggf. Signaturen. Wir speichern nur das technisch Notwendige für die Nutzung.</p>
+    </section>
+
+    <section id="rechte">
+      <div class="kicker">Kontrolle</div>
+      <h2>5. Rechte</h2>
+      <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15 – 21 DSGVO). Wende dich dazu an <a href="mailto:privacy@rendexfi.app">privacy@rendexfi.app</a>.</p>
+    </section>
+
+    <section id="kontakt">
+      <div class="kicker">Support</div>
+      <h2>6. Kontakt</h2>
+      <p><strong>RendexFi Protocol</strong><br>Sandbrink 7, 31558 Hagenburg, Deutschland<br>E-Mail: <a href="mailto:privacy@rendexfi.app">privacy@rendexfi.app</a></p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="socials">
+    <a href="https://instagram.com/rendexfi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5z"/></svg></a>
+    <a href="https://twitter.com/rendexfi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3 3h5.2l4.4 6.3L17.5 3H21l-7.7 10.5L21.5 21h-5.2l-4.8-6.8L6.5 21H3l7.9-10.6L3 3z"/></svg></a>
+    <a href="https://discord.gg/yMb4DvXAvA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.3 4.4A18 18 0 0 0 15.9 3l-.2.4c2 .6 3 1.3 4 2.2-1.6-.8-3.1-1.3-4.6-1.6a16 16 0 0 0-6.2 0C7.4 4 6 4.5 4.4 5.6c1-.9 2.1-1.6 4-2.2L8.3 3A18 18 0 0 0 3.9 4.4C1.3 8 .5 11.4.8 14.9c1.7 1.2 3.4 2 5.2 2.5l1.1-1.8c-.6-.2-1.3-.5-2-.9l.5-.3c3.8 1.8 7.9 1.8 11.7 0l.5.3c-.7.4-1.4.7-2 .9l1.1 1.8c1.8-.5 3.5-1.3 5.2-2.5.4-3.5-.5-6.9-2.8-10.5z"/></svg></a>
+    <button class="theme-toggle" id="themeToggle"><span class="theme-icon">🌙</span></button>
+  </div>
+  © <span id="y"></span> RendexFi Protocol • <a href="/impressum">Impressum</a> • <a href="/privacy">Datenschutz</a>
+</footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+const toggle=document.getElementById('themeToggle');
+const body=document.body;
+const saved=localStorage.getItem('theme');
+if(saved==='light')body.classList.add('light-mode');
+toggle.textContent=body.classList.contains('light-mode')?'☀️':'🌙';
+toggle.addEventListener('click',()=>{
+  body.classList.toggle('light-mode');
+  const mode=body.classList.contains('light-mode')?'light':'dark';
+  toggle.textContent=mode==='light'?'☀️':'🌙';
+  localStorage.setItem('theme',mode);
+});
+const menuBtn=document.querySelector('.menu-btn');
+const dropdownMenu=document.querySelector('.dropdown-menu');
+menuBtn.addEventListener('click',()=>{dropdownMenu.classList.toggle('active');});
+document.addEventListener('click',e=>{if(!dropdownMenu.contains(e.target)&&!menuBtn.contains(e.target)){dropdownMenu.classList.remove('active');}});
+</script>
+</body>
+</html>
