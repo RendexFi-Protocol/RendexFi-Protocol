@@ -1,4 +1,4 @@
-# 🚀 RendexFi-Protocol  
+# 🚀 RendexFi Protocol  
 ---
 # ⚡ Next-Gen DeFi intelligent Assets
 Verwalte dein gesamtes DeFi-Portfolio, handle Tokens in Sekunden und genieße volle Kontrolle – sicher, transparent und non-custodial.
