@@ -159,6 +159,7 @@ body {
 /* Inhalt */
 .rendexfi-modal-content {
   width: 100%;
+  padding: 0;
 }
 
 /* Schließen X */
