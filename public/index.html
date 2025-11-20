@@ -398,6 +398,50 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+const addressModal = document.getElementById('addressModal');
+const closeAddressModal = document.getElementById('closeAddressModal');
+const fullAddressText = document.getElementById('fullAddressText');
+const logoutButton = document.getElementById('logoutButton');
+
+// 📌 Klick auf Wallet-Adresse → vollständige Adresse anzeigen
+walletStatus.addEventListener('click', () => {
+  const fullAddr = localStorage.getItem('walletAddress');
+  fullAddressText.textContent = fullAddr;
+  addressModal.style.display = "block";
+});
+
+// ❌ Schließen
+closeAddressModal.addEventListener('click', () => {
+  addressModal.style.display = "none";
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === addressModal) addressModal.style.display = "none";
+});
+
+/* 🔴 LOGOUT SYSTEM */
+logoutButton.addEventListener('click', () => {
+  // Wallet disconnect falls Provider existiert
+  if (window.solana?.disconnect) window.solana.disconnect();
+  if (window.solflare?.disconnect) window.solflare.disconnect();
+  if (window.backpack?.disconnect) window.backpack.disconnect();
+
+  // LocalStorage löschen
+  localStorage.removeItem('walletConnected');
+  localStorage.removeItem('walletType');
+  localStorage.removeItem('walletAddress');
+
+  // UI zurücksetzen
+  walletAddressSpan.textContent = "";
+  walletStatus.classList.remove("active");
+  walletButton.style.display = "flex";
+
+  // Modal schließen
+  addressModal.style.display = "none";
+
+  alert("Du wurdest erfolgreich ausgeloggt.");
+});
+
   /* ROUND MAP INTERAKTION */
   document.addEventListener('DOMContentLoaded', function() {
     const milestones = document.querySelectorAll('.milestone');
