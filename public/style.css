@@ -37,6 +37,7 @@ body {
   min-height: 100vh;
   transition: background 0.5s ease, color 0.3s ease;
 }
+
 /* 🧭 NAVBAR */
 .navbar {
   position: fixed;
@@ -64,6 +65,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem 1.2rem;
+  position: relative;
 }
 
 .nav-left {
@@ -84,131 +86,26 @@ body {
 .accent {
   color: var(--acc2);
 }
-@media (max-width: 600px) {
-  .nav-right {
-    min-width: 110px;
-    gap: 0.45rem;
-    padding: 0.25rem 0.4rem;
-  }
-}
+
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* etwas kompakterer Abstand */
+  gap: 0.5rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
-  padding: 0.3rem 0.5rem; /* 🔹 kleinere Innenabstände */
+  padding: 0.3rem 0.5rem;
   border-radius: 40px;
   backdrop-filter: blur(10px);
   flex-wrap: nowrap;
-  min-width: 130px; /* 🔥 kompaktere Boxgröße */
-  justify-content: center; /* zentriert Buttons */
+  min-width: 130px;
+  justify-content: center;
 }
 
-/* 💰 Wallet Status */
-.wallet-status {
-  display: none;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-  color: #b6ffe4;
-  background: rgba(0, 255, 128, 0.08);
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-weight: 600;
-  white-space: nowrap;
-  border: 1px solid rgba(0, 255, 128, 0.25);
-  transition: all 0.3s ease;
-}
-
-.wallet-status.active {
-  display: flex;
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-/* ✅ Wallet Status Dot + Address */
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #2ecc71;
-  border-radius: 50%;
-  box-shadow: 0 0 6px #2ecc71;
-}
-
-.wallet-address {
-  font-family: monospace;
-  color: #b0ffd8;
-}
-
-/* KOMPAKTES WALLET-MODAL */
-.rendexfi-modal {
-  position: absolute;
-  top: 60px;                /* unter der Navbar */
-  right: 10px;              /* am rechten Rand ausrichten */
-  width: 260px;             /* kleines Popup */
-  background: #0f1329;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 14px;
-  padding: 15px;
-  display: none;
-  z-index: 9999;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-}
-
-/* Inhalt */
-.rendexfi-modal-content {
-  width: 100%;
-  padding: 0;
-}
-
-/* Schließen X */
-.close-btn {
-  float: right;
-  cursor: pointer;
-  font-size: 18px;
-  opacity: 0.6;
-}
-
-/* Logout Button kompakt */
-.logout-btn {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  background: #e63946;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.logout-btn:hover {
-  background: #c72d38;
-}
-
-/* 📱 Mobile */
-@media (max-width: 600px) {
-  .wallet-status {
-    font-size: 0.8rem;
-    padding: 3px 6px;
-  }
-
-  /* Adresse bleibt sichtbar! */
-  .wallet-address {
-    display: inline;
-    font-size: 0.75rem;
-  }
-}
-
-.light-mode .nav-right {
-  background: rgba(0, 0, 0, 0.03);
-}
-/* 📋 Dropdown Menü – perfekt ausgerichtet unter Menü-Button */
+/* 📋 Dropdown Menü – KORRIGIERT */
 .dropdown-menu {
   position: absolute;
-  top: 52px; /* 🔹 sitzt jetzt direkt unter der Navbar */
-  right: 0.9rem; /* 🔹 minimal mehr Abstand für perfekte Zentrierung */
+  top: 100%; /* Direkt unter dem Navbar-Container */
+  right: 0.9rem;
   background: rgba(15, 20, 40, 0.96);
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -264,18 +161,43 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.footer-beta {
-  text-align: center;
-  margin-bottom: 75px; 
-  margin-top: 15px;
+
+/* 💰 Wallet Status */
+.wallet-status {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #b6ffe4;
+  background: rgba(0, 255, 128, 0.08);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid rgba(0, 255, 128, 0.25);
+  transition: all 0.3s ease;
 }
 
-.footer-beta .beta-btn {
-  display: inline-block;
-  font-size: 1rem;
-  padding: 0.6rem 1.4rem;
-  border-radius: 30px;
+.wallet-status.active {
+  display: flex;
+  opacity: 1;
+  transform: scale(1.02);
 }
+
+/* ✅ Wallet Status Dot + Address */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #2ecc71;
+}
+
+.wallet-address {
+  font-family: monospace;
+  color: #b0ffd8;
+}
+
 /* 🎯 Buttons */
 .beta-btn {
   background: linear-gradient(90deg, var(--acc1), var(--acc2));
@@ -291,11 +213,7 @@ body {
 .beta-btn:hover {
   opacity: 0.9;
 }
-@media (max-width: 600px) {
-  .footer-beta {
-    margin-bottom: 60px; /* etwas kleiner, aber immer noch angenehm luftig */
-  }
-}
+
 .icon-btn,
 .menu-btn {
   background: rgba(255, 255, 255, 0.04);
@@ -316,6 +234,8 @@ body {
   border-color: var(--acc2);
   box-shadow: 0 0 10px rgba(96,165,250,0.25);
 }
+
+/* MAIN CONTENT */
 main {
   margin: 0;
   padding: 0;
@@ -333,29 +253,32 @@ main {
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  padding: 6rem 1.6rem 4rem; /* 🔹 kleiner oben */
+  padding: 6rem 1.6rem 4rem;
   overflow: hidden;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  top: -80px; /* 🔥 verschiebt Bild nach oben unter Navbar */
+  top: -80px;
   left: 0;
   width: 100%;
-  height: calc(100% + 80px); /* damit oben nix abgeschnitten wird */
-  background: url("/img/rdx_token.png") no-repeat center top;
+  height: calc(100% + 80px);
+  background: url("./img/rdx_token.png") no-repeat center top;
   background-size: 135%;
   opacity: 0.25;
   z-index: -1;
   pointer-events: none;
   filter: brightness(1.1);
+  animation: floatBackground 6s ease-in-out infinite;
 }
+
 /* 💨 sanfte Bewegung für visuelle Tiefe */
 @keyframes floatBackground {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
 }
+
 .hero::after {
   content: "";
   position: absolute;
@@ -367,7 +290,7 @@ main {
   z-index: -1;
 }
 
-badge {
+.badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.06);
   padding: 0.4rem 0.8rem;
@@ -510,6 +433,20 @@ h1 span {
   background: var(--border);
 }
 
+/* FOOTER */
+.footer-beta {
+  text-align: center;
+  margin-bottom: 75px; 
+  margin-top: 15px;
+}
+
+.footer-beta .beta-btn {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+}
+
 /* 🌐 Socials + Theme Button nebeneinander */
 footer {
   text-align: center;
@@ -526,7 +463,6 @@ footer .socials {
   gap: 12px;
   margin-top: 40px;
   margin-bottom: 24px;
-  
 }
 
 footer .socials a {
@@ -576,6 +512,7 @@ footer .theme-icon {
   font-size: 16px;
   opacity: 0.9;
 }
+
 .network-icons {
   display: flex;
   gap: 12px;
@@ -598,155 +535,128 @@ footer .theme-icon {
   transform: scale(1.1);
 }
 
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    width: calc(100% - 1.4rem);
-  }
-
-  .hero {
-    padding-top: 8rem;
-  }
-
-  footer .socials {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-}
-/* WALLETS INTERACTION */
-
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #2ecc71;
-  border-radius: 50%;
-  box-shadow: 0 0 6px #2ecc71;
-}
-
-.wallet-address {
-  font-family: monospace;
-}
+/* ROADMAP SECTION */
 .roadmap-section {
-    padding: 60px 20px;
-    background: var(--bg-gradient);
-    color: var(--text);
+  padding: 60px 20px;
+  background: var(--bg-gradient);
+  color: var(--text);
 }
 
 .roadmap-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    padding: 40px 0;
-    /* Höhe wird automatisch angepasst */
-    min-height: 800px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 40px 0;
+  min-height: 800px;
 }
 
 .snake-path {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 100%;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 100%;
+  z-index: 1;
 }
 
 .snake-line {
-    fill: none;
-    stroke: url(#gradient);
-    stroke-width: 8;
-    stroke-linecap: round;
-    filter: drop-shadow(0 0 8px var(--acc1));
+  fill: none;
+  stroke: url(#gradient);
+  stroke-width: 8;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px var(--acc1));
 }
 
 .milestones {
-    position: relative;
-    z-index: 2;
-    height: 100%;
+  position: relative;
+  z-index: 2;
+  height: 100%;
 }
 
 .milestone {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s forwards;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
 }
 
 .milestone:nth-child(odd) {
-    left: 0;
-    flex-direction: row;
+  left: 0;
+  flex-direction: row;
 }
 
 .milestone:nth-child(even) {
-    right: 0;
-    flex-direction: row-reverse;
+  right: 0;
+  flex-direction: row-reverse;
 }
 
 .milestone-content {
-    flex: 1;
-    padding: 0 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  flex: 1;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .milestone:nth-child(odd) .milestone-content {
-    text-align: right;
+  text-align: right;
 }
 
 .milestone:nth-child(even) .milestone-content {
-    text-align: left;
+  text-align: left;
 }
+
 /* 🟦 Abgerundete Vierecke statt Kreise */
 .milestone-circle {
-    width: 150px;
-    height: 95px;
-    border-radius: 20px; /* statt 50% -> abgerundetes Rechteck */
-    background: linear-gradient(145deg, rgba(20, 25, 45, 0.9), rgba(10, 12, 25, 0.9));
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--text);
-    text-align: center;
-    padding: 15px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    transition: all 0.35s ease;
-    position: relative;
-    z-index: 3;
-    cursor: pointer;
+  width: 150px;
+  height: 95px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(20, 25, 45, 0.9), rgba(10, 12, 25, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: all 0.35s ease;
+  position: relative;
+  z-index: 3;
+  cursor: pointer;
 }
 
 /* 💫 Hover-Effekt: leichtes Schweben + Glow */
 .milestone-circle:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 28px rgba(96, 165, 250, 0.25);
-    border-color: var(--acc2);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(96, 165, 250, 0.25);
+  border-color: var(--acc2);
 }
+
 /* Dynamische Positionierung basierend auf der Anzahl der Meilensteine */
 .milestones:has(.milestone:nth-child(1):last-child) {
-    height: 200px;
+  height: 200px;
 }
 
 .milestones:has(.milestone:nth-child(2):last-child) {
-    height: 500px;
+  height: 500px;
 }
 
 .milestones:has(.milestone:nth-child(3):last-child) {
-    height: 800px;
+  height: 800px;
 }
 
 .milestones:has(.milestone:nth-child(4):last-child) {
-    height: 1100px;
+  height: 1100px;
 }
 
 .milestones:has(.milestone:nth-child(5):last-child) {
-    height: 1400px;
+  height: 1400px;
 }
 
 /* Positionen für 5 Meilensteine */
@@ -776,154 +686,109 @@ footer .theme-icon {
 
 /* Farben für die Kreise */
 .milestone:nth-child(1) .milestone-circle {
-    background: linear-gradient(135deg, var(--acc1), var(--acc2));
+  background: linear-gradient(135deg, var(--acc1), var(--acc2));
 }
 
 .milestone:nth-child(2) .milestone-circle {
-    background: linear-gradient(135deg, var(--acc2), var(--acc1));
-    animation-delay: 0.2s;
+  background: linear-gradient(135deg, var(--acc2), var(--acc1));
+  animation-delay: 0.2s;
 }
 
 .milestone:nth-child(3) .milestone-circle {
-    background: linear-gradient(135deg, var(--acc1), color-mix(in srgb, var(--acc1) 70%, var(--acc2)));
-    animation-delay: 0.4s;
+  background: linear-gradient(135deg, var(--acc1), color-mix(in srgb, var(--acc1) 70%, var(--acc2)));
+  animation-delay: 0.4s;
 }
 
 .milestone:nth-child(4) .milestone-circle {
-    background: linear-gradient(135deg, var(--acc2), color-mix(in srgb, var(--acc2) 70%, var(--acc1)));
-    animation-delay: 0.6s;
+  background: linear-gradient(135deg, var(--acc2), color-mix(in srgb, var(--acc2) 70%, var(--acc1)));
+  animation-delay: 0.6s;
 }
 
 .milestone:nth-child(5) .milestone-circle {
-    background: linear-gradient(135deg, color-mix(in srgb, var(--acc1) 50%, var(--acc2)), color-mix(in srgb, var(--acc2) 50%, var(--acc1)));
-    animation-delay: 0.8s;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--acc1) 50%, var(--acc2)), color-mix(in srgb, var(--acc2) 50%, var(--acc1)));
+  animation-delay: 0.8s;
 }
 
 .milestone-title {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-    font-weight: 600;
-    color: var(--text);
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text);
 }
 
 .milestone-description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
 }
 
 @keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .snake-head {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 25px;
-    height: 25px;
-    background: var(--acc1);
-    border-radius: 50%;
-    box-shadow: 0 0 20px var(--acc1);
-    z-index: 4;
-    animation: pulse 2s infinite;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25px;
+  height: 25px;
+  background: var(--acc1);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--acc1);
+  z-index: 4;
+  animation: pulse 2s infinite;
 }
 
 .snake-tail {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 18px;
-    height: 18px;
-    background: var(--acc2);
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--acc2);
-    z-index: 4;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: var(--acc2);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--acc2);
+  z-index: 4;
 }
 
 @keyframes pulse {
-    0% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.1); }
-    100% { transform: translateX(-50%) scale(1); }
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+  100% { transform: translateX(-50%) scale(1); }
 }
 
 .status-badge {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--acc1);
-    color: var(--bg0);
-    padding: 4px 8px;
-    border-radius: 15px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    box-shadow: 0 2px 8px var(--acc1);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--acc1);
+  color: var(--bg0);
+  padding: 4px 8px;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px var(--acc1);
 }
 
 .milestone:nth-child(1) .status-badge {
-    background: var(--acc1);
+  background: var(--acc1);
 }
 
 .milestone:nth-child(2) .status-badge {
-    background: var(--acc2);
+  background: var(--acc2);
 }
 
 .milestone:nth-child(3) .status-badge,
 .milestone:nth-child(4) .status-badge,
 .milestone:nth-child(5) .status-badge {
-    background: var(--muted);
+  background: var(--muted);
 }
 
-@media (max-width: 768px) {
-    .roadmap-container {
-        min-height: 600px;
-    }
-    
-    .milestone, .milestone:nth-child(even) {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-    }
-    
-    .milestone-content {
-        padding: 20px 0;
-        text-align: center !important;
-    }
-    
-    .milestone-circle {
-        width: 100px;
-        height: 100px;
-        font-size: 0.9rem;
-    }
-    
-    .snake-path {
-        width: 70%;
-        left: 15%;
-    }
-    
-    .milestone-title {
-        font-size: 1.3rem;
-    }
-    
-    .milestone-description {
-        font-size: 0.9rem;
-    }
-}
-
-/* SVG Gradient für die Schlange */
-.snake-gradient-stop-1 {
-    stop-color: var(--acc1);
-}
-
-.snake-gradient-stop-2 {
-    stop-color: var(--acc2);
-}
 /* 💰 RendexFi Wallet Modal */
 .rendexfi-modal {
   display: none;
@@ -1003,6 +868,135 @@ footer .theme-icon {
 
 .close-btn:hover {
   color: var(--text);
+}
+
+/* KOMPAKTES WALLET-MODAL */
+.rendexfi-modal.address-modal {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.rendexfi-modal.address-modal .rendexfi-modal-content {
+  width: 300px;
+  margin: 20% auto;
+}
+
+.logout-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #e63946;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background: #c72d38;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    width: calc(100% - 1.4rem);
+  }
+
+  .hero {
+    padding-top: 8rem;
+  }
+
+  footer .socials {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .dropdown-menu {
+    width: 140px;
+    right: 0.5rem;
+  }
+  
+  .dropdown-menu li {
+    padding: 8px 12px;
+  }
+  
+  .dropdown-menu a {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-right {
+    min-width: 110px;
+    gap: 0.45rem;
+    padding: 0.25rem 0.4rem;
+  }
+  
+  .wallet-status {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
+
+  .wallet-address {
+    display: inline;
+    font-size: 0.75rem;
+  }
+  
+  .footer-beta {
+    margin-bottom: 60px;
+  }
+  
+  .roadmap-container {
+    min-height: 600px;
+  }
+  
+  .milestone, .milestone:nth-child(even) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .milestone-content {
+    padding: 20px 0;
+    text-align: center !important;
+  }
+  
+  .milestone-circle {
+    width: 100px;
+    height: 100px;
+    font-size: 0.9rem;
+  }
+  
+  .snake-path {
+    width: 70%;
+    left: 15%;
+  }
+  
+  .milestone-title {
+    font-size: 1.3rem;
+  }
+  
+  .milestone-description {
+    font-size: 0.9rem;
+  }
+}
+
+.light-mode .nav-right {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.light-mode .dropdown-menu {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+/* SVG Gradient für die Schlange */
+.snake-gradient-stop-1 {
+  stop-color: var(--acc1);
+}
+
+.snake-gradient-stop-2 {
+  stop-color: var(--acc2);
 }
 
 @keyframes fadeInUp {
