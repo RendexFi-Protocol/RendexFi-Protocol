@@ -19,6 +19,45 @@ body {
   color: var(--text);
 }
 
+/* NAV LINKS */
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+}
+
+/* LOGO FIX */
+.logo {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+/* BRAND TEXT ALIGN */
+.brand {
+  line-height: 1;
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+  .nav-right {
+    gap: 0.4rem;
+  }
+
+  .nav-link {
+    display: none;
+  }
+}
+
 /* HERO */
 .hero {
   position: relative;
