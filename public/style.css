@@ -19,6 +19,11 @@ body {
   color: var(--text);
 }
 
+body.scrolled .navbar {
+  background: rgba(10, 16, 36, 0.85);
+  backdrop-filter: blur(22px);
+}
+
 /* NAVBAR CORE */
 .navbar {
   position: fixed;
