@@ -14,15 +14,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  background: var(--bg);
-  overflow-x: hidden;
-}
-
 body {
   background: radial-gradient(circle at top, #0b1125, #070b18);
   padding: 0 !important;
