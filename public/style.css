@@ -26,12 +26,10 @@ body {
   transform: translateX(-50%);
   width: calc(100% - 40px);
   max-width: 1100px;
-
   background: rgba(10, 16, 36, 0.65);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 20px;
-
   z-index: 1000;
 }
 
@@ -51,44 +49,79 @@ body {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px; /* Etwas mehr Abstand zwischen den Links */
 }
-/* NAV LINKS */
+
+/* NAV LINKS - Verbesserte Version */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Weniger Abstand zwischen den Links für kompakteres Aussehen */
+}
+
 .nav-link {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 6px 10px;
+  padding: 8px 14px; /* Etwas mehr Padding für bessere Klickbarkeit */
   border-radius: 10px;
-  transition: 0.25s ease;
+  transition: all 0.25s ease;
+  white-space: nowrap; /* Verhindert Zeilenumbruch */
 }
 
 .nav-link:hover {
   color: var(--text);
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-/* LOGO FIX */
+/* Aktiver Link-Stil (optional) */
+.nav-link.active {
+  color: var(--acc2);
+  background: rgba(96, 165, 250, 0.08);
+}
+
+/* LOGO */
 .logo {
   height: 26px;
   width: auto;
   display: block;
 }
 
-/* BRAND TEXT ALIGN */
 .brand {
   line-height: 1;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
 }
 
 /* MOBILE NAV */
 @media (max-width: 768px) {
-  .nav-right {
-    gap: 0.4rem;
+  .nav-wrapper {
+    padding: 10px 14px;
+  }
+  
+  .nav-links {
+    gap: 2px; /* Noch kompakter auf Mobile */
+  }
+  
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .brand {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-link {
+    display: none; /* Links auf sehr kleinen Screens ausblenden */
   }
 
-  .nav-link {
-    display: none;
+.nav-link {
+  display: none;
   }
 }
 
