@@ -18,7 +18,41 @@ body {
   background: radial-gradient(circle at top, #0b1125, #070b18);
   color: var(--text);
 }
+/* NAVBAR CORE */
+.navbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1100px;
 
+  background: rgba(10, 16, 36, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  z-index: 1000;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 /* NAV LINKS */
 .nav-link {
   color: var(--muted);
