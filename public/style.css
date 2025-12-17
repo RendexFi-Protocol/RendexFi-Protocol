@@ -120,17 +120,6 @@ body {
   .nav-link {
     display: none; /* Links auf sehr kleinen Screens ausblenden */
   }
-  
-  /* Optional: Hamburger-Menü für Mobile hinzufügen */
-  .mobile-menu-btn {
-    display: block;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 8px;
-  }
 }
 
 /* HERO */
