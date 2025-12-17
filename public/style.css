@@ -18,112 +18,85 @@ body {
   background: radial-gradient(circle at top, #0b1125, #070b18);
   color: var(--text);
 }
-/* NAVBAR CORE */
+
+/* NAVBAR */
 .navbar {
   position: fixed;
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 40px);
-  max-width: 1100px;
+  width: auto;           /* NICHT full-width */
+  max-width: 1100px;     /* Optional: Begrenzung */
+  padding: 0 20px;
+
+  background: rgba(10, 16, 36, 0.65);
+  backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 20px;
+
+  display: flex;
   z-index: 1000;
 }
 
+/* WRAPPER */
 .nav-wrapper {
   display: flex;
+  justify-content: space-between; /* Logo links, Links rechts */
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 18px;
+  width: 100%;
 }
 
+/* LINKS: NUR LOGO */
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
+/* RECHTS: LINKS + BUTTONS */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px; /* Etwas mehr Abstand zwischen den Links */
-  background: rgba(10, 16, 36, 0.65);
-  backdrop-filter: blur(16px);
-  border-radius: 20px;
-  padding: 10px 14px;
+  gap: 12px;
 }
 
-/* NAV LINKS - Verbesserte Version */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px; /* Weniger Abstand zwischen den Links für kompakteres Aussehen */
-}
-
+/* NAV LINKS */
 .nav-link {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 8px 14px; /* Etwas mehr Padding für bessere Klickbarkeit */
+  padding: 6px 10px;
   border-radius: 10px;
-  transition: all 0.25s ease;
-  white-space: nowrap; /* Verhindert Zeilenumbruch */
+  transition: 0.25s ease;
 }
 
 .nav-link:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255,255,255,0.06);
 }
 
-/* Aktiver Link-Stil (optional) */
-.nav-link.active {
-  color: var(--acc2);
-  background: rgba(96, 165, 250, 0.08);
+/* BUTTON */
+.nav-right .btn-primary {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  box-shadow: 0 0 16px rgba(96,165,250,0.25);
 }
 
 /* LOGO */
 .logo {
   height: 26px;
   width: auto;
-  display: block;
 }
 
-.brand {
-  line-height: 1;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-/* MOBILE NAV */
+/* MOBILE */
 @media (max-width: 768px) {
-  .nav-wrapper {
-    padding: 10px 14px;
-  }
-  
-  .nav-links {
-    gap: 2px; /* Noch kompakter auf Mobile */
-  }
-  
-  .nav-link {
-    padding: 6px 10px;
-    font-size: 0.85rem;
-  }
-  
-  .brand {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .nav-link {
-    display: none; /* Links auf sehr kleinen Screens ausblenden */
+  .nav-right {
+    gap: 6px;
   }
 
-.nav-link {
-  display: none;
+  .nav-link {
+    display: none;
   }
 }
 
