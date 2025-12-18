@@ -202,19 +202,13 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 8px 20px;
+    border-radius: 9999px;
+    text-decoration: none;
+    line-height: 1;
 
-    padding: 10px 22px;          /* weniger Höhe */
-    border-radius: 9999px;       /* sauberer Pill-Button */
-    
-    font-size: 15px;            /* statt fett */
-
-    color: #0b1b2b;
     background: linear-gradient(135deg, #35e0c5, #4aa3ff);
-
-    text-decoration: none;       /* entfernt die Linie */
-    line-height: 1;              /* verhindert optische Dicke */
-    
-    transition: all 0.2s ease;
+    color: #0b1b2b;
 }
 
 .btn-primary:hover {
