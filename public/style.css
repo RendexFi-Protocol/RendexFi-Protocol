@@ -24,9 +24,7 @@ body {
   top: 0;
   width: 100%;
   padding: 1.2rem 2rem;
-  background: none;
   backdrop-filter: blur(22px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 1000;
   display: flex;
   justify-content: space-between;
