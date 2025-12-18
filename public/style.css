@@ -199,14 +199,29 @@ body {
 }
 
 .btn-primary {
-  padding: 14px 32px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--acc1), var(--acc2));
-  border: none;
-  color: #000;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 0 24px rgba(96,165,250,0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 22px;          /* weniger Höhe */
+    border-radius: 9999px;       /* sauberer Pill-Button */
+    
+    font-size: 15px;
+    font-weight: 500;            /* statt fett */
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    color: #0b1b2b;
+    background: linear-gradient(135deg, #35e0c5, #4aa3ff);
+
+    text-decoration: none;       /* entfernt die Linie */
+    line-height: 1;              /* verhindert optische Dicke */
+    
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
 }
 
 /* STATS */
