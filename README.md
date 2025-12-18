@@ -1,4 +1,6 @@
 # 🚀 RendexFi Protocol  
+
+![Externes Bild](https://cdn.discordapp.com/attachments/1447373886474944615/1451358824475656254/IMG_3404.png?ex=6945e2bc&is=6944913c&hm=3beb20682a05d57714e633f4591fbcfff5428a6d89036cf0662f78e0fe6f40c6&)
 ---
 # ⚡ Next-Gen DeFi intelligent Assets
 Verwalte dein gesamtes DeFi-Portfolio, handle Tokens in Sekunden und genieße volle Kontrolle – sicher, transparent und non-custodial.
