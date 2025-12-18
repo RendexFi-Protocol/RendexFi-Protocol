@@ -16,8 +16,7 @@
 
 body {
   background: radial-gradient(circle at top, #0b1125, #070b18);
-  color: var(--text);ient(circle at top, #0b1125, #070b18);
-  padding: 0 !important;
+  color: var(--text);
 }
 
 body.scrolled .navbar {
