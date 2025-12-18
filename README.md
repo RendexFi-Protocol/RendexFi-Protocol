@@ -13,10 +13,6 @@ Verwalte deine Assets intelligent – RendexFi bündelt, analysiert und optimier
 Schnell & transparent
 Tausche Tokens sofort und gebührenoptimiert – ultraschnelle Transaktionen über die RendexFi Swap Engine.
 
-## 🤖 AI INTELLIGENCE
-High-Tech Intelligence
-Verwalte deine Asset mit der – RendexFi-Ai , Sie analysiert und optimiert dein gesamtes DeFi-Portfolio in Echtzeit.
-
 ## 💫 CROSS-CHAIN
 Cross-Chain Bridge
 Nahtlose Token-Transfers über mehrere Chains hinweg – sicher und gasoptimiert.
