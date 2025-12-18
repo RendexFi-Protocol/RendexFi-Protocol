@@ -25,20 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
-    // SCROLL-EFFEKT FÜR NAVBAR
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (navbar) {
-            if (window.scrollY > 50) {
-                document.body.classList.add('scrolled');
-                navbar.style.background = 'rgba(10, 16, 36, 0.95)';
-            } else {
-                document.body.classList.remove('scrolled');
-                navbar.style.background = 'rgba(10, 16, 36, 0.85)';
-            }
-        }
-    });
+
     
     // GLATTE SCROLL-ANIMATION FÜR ANCHOR LINKS
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
