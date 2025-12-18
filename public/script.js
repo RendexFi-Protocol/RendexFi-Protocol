@@ -119,4 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateStatsOnScroll);
     // Auch beim Laden prüfen
     animateStats();
+    
+    document.getElementById('launchbtn').addEventListener('click', function() {
+    // Führe Aktion aus
+    window.location.href = 'https://trade.rendexfi.app';
+    // Oder: Modal öffnen, Animation starten, etc.
 });
