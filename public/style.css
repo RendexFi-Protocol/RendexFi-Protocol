@@ -19,7 +19,6 @@ body {
   color: var(--text);
 }
 
-/* NAVIGATION */
 .navbar {
   position: fixed;
   top: 0;
@@ -34,7 +33,6 @@ body {
   align-items: center;
 }
 
-/* Logo als Bild */
 .nav-logo {
   display: flex;
   align-items: center;
