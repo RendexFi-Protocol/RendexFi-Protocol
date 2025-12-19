@@ -149,6 +149,18 @@ body {
   }
 }
 
+/* Socials */
+.socials{display:flex;justify-content:center;gap:14px;margin-bottom:26px;}
+.socials a{
+  display:inline-flex;width:34px;height:34px;border-radius:12px;
+  align-items:center;justify-content:center;text-decoration:none;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  transition:transform .18s ease, background .18s ease;
+}
+.socials a:hover{transform:translateY(-2px);background:rgba(255,255,255,.12);}
+.socials svg{width:17px;height:17px;fill:#d0d5e1;}
+
 /* HERO */
 .hero {
   position: relative;
