@@ -15,7 +15,10 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #0b1125, #070b18);
+  background:
+    radial-gradient(circle at left bottom, rgba(0, 255, 160, 0.12), transparent 40%),
+    radial-gradient(circle at right top, rgba(0, 140, 255, 0.18), transparent 45%),
+    #06080d;
   color: var(--text);
   background-attachment: fixed;
   background-size: 100% auto;
