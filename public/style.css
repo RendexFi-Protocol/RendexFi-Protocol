@@ -24,6 +24,16 @@ body {
   background-size: 100% auto;
 }
 
+
+# ICONS 
+
+
+i {
+  width: 32px;
+  height: 32px;
+  stroke: #22c55e; /* grün */
+}
+
 .navbar {
   position: fixed;
   top: 0;
